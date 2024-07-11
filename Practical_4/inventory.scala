@@ -1,43 +1,48 @@
-object InventoryManagement {
-  var itemNames: Array[String] = Array("Apples", "Bananas", "Oranges")
-  var itemQuantities: Array[Int] = Array(50, 30, 20)
+object inventory{
+    var item_name: Array[String] = Array("80pg Books", "160pg Books", "200pg Books", "Blue Pens", "Black pens", "Pencils")
+    var no_of_items: Array[Int] = Array(20, 14, 9, 37, 29, 11)
 
-  def displayInventory(): Unit = {
-    println("Current Inventory:")
-    for (i <- itemNames.indices) {
-      println(s"${itemNames(i)}: ${itemQuantities(i)}")
+    def displayInventory():Unit= {
+        println("No.of Items \t|     Item name")
+        for(i <- item_name.indices){
+            println(s"${no_of_items(i)} \t\t|     ${item_name(i)}")
+        }
     }
-  }
 
-  def restockItem(itemName: String, quantity: Int): Unit = {
-    val index = itemNames.indexOf(itemName)
-    if (index != -1) {
-      itemQuantities(index) += quantity
-      println(s"Restocked $quantity of $itemName. New quantity: ${itemQuantities(index)}")
-    } else {
-      println(s"Item $itemName does not exist in inventory.")
+    def restock(restock_item: String, restock_ammount: Int):Unit={
+        var index = item_name.indexOf(restock_item)
+
+        if(index > -1){
+            no_of_items(index) += restock_ammount
+            println(s"$restock_item has been restocked!")
+        }
+        else
+            println(s"Item $restock_item NOT FOUND!!")
     }
-  }
 
-  def sellItem(itemName: String, quantity: Int): Unit = {
-    val index = itemNames.indexOf(itemName)
-    if (index != -1) {
-      if (itemQuantities(index) >= quantity) {
-        itemQuantities(index) -= quantity
-        println(s"Sold $quantity of $itemName. Remaining quantity: ${itemQuantities(index)}")
-      } else {
-        println(s"Not enough $itemName in inventory to sell $quantity.")
-      }
-    } else {
-      println(s"Item $itemName does not exist in inventory.")
+    def sell(sell_item: String, sell_ammount: Int):Unit={
+        var index = item_name.indexOf(sell_item)
+
+        if(index > -1){
+            if(sell_ammount <= no_of_items(index)){
+                no_of_items(index) -= sell_ammount
+                println(s"$sell_ammount of $sell_item has sold!")
+            }
+            else
+                println(s"$sell_item don't have enough stock!!")
+        }
+        else
+            println(s"Item $sell_item NOT FOUND!!")
     }
-  }
-
-  def main(args: Array[String]): Unit = {
-    displayInventory()
-    restockItem("Apples", 10)
-    sellItem("Bananas", 5)
-    sellItem("Oranges", 25)
-    displayInventory()
-  }
+    
+    def main(args: Array[String]):Unit = {
+        displayInventory()
+        restock("Black pens",100)
+        restock("Red pens",100)
+        displayInventory()
+        sell("80pg Books", 7)
+        displayInventory()
+        sell("200pg Books", 10)
+        displayInventory()
+    }
 }
