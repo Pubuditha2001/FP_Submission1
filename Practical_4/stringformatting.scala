@@ -13,16 +13,16 @@ object StringFormattingDemo {
   }
 
   def main(args: Array[String]): Unit = {
-    val formattedBenny = formatNames("Benny")(toUpper)
-    println(formattedBenny)  
+    val n1 = formatNames("Benny")(toUpper)
+    println(n1)  
 
-    val formattedNiroshan = "Niroshan".substring(0, 2).toUpperCase + "Niroshan".substring(2)
-    println(formattedNiroshan) 
+    val n2 = "Niroshan".substring(0, 2).toUpperCase + "Niroshan".substring(2)
+    println(n2) 
 
-    val formattedSaman = formatNames("Saman")(toLower)
-    println(formattedSaman)
+    val n3 = formatNames("Saman")(toLower)
+    println(n3)
 
-    val formattedKumara = "Kumara".substring(0, 1).toUpperCase + "Kumara".substring(1, 5).toLowerCase + "Kumara".substring(5).toUpperCase
-    println(formattedKumara) 
+    val n4 = "Kumara".substring(0, 1).toUpperCase + "Kumara".substring(1, 5).toLowerCase + "Kumara".substring(5).toUpperCase
+    println(n4) 
   }
 }
