@@ -1,5 +1,3 @@
-import scala.io.StdIn._
-
 object InterestCalculator {
   def main(args: Array[String]): Unit = {
     val interestCalculator: Double => Double = (deposit: Double) => {
@@ -12,7 +10,7 @@ object InterestCalculator {
     }
 
     println("Enter the deposit amount in Rs.: ")
-    val deposit = readLine().toDouble
+    val deposit = scala.io.StdIn.readLine().toDouble
 
     val interest = interestCalculator(deposit)
 
